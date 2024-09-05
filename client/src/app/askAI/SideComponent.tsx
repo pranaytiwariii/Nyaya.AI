@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 
-export default function sidebar() {
+export default function SidebarComponent() {
   const [isOpen, setIsOpen] = useState(true);
 
   const toggleSidebar = () => {
@@ -13,12 +13,12 @@ export default function sidebar() {
   return (
     <div className='shadow-md h-screen'>
       {isOpen && (
-        <Sidebar classname="">
+        <Sidebar className="">
           <div className='flex justify-between px-2'>
-          <h1> Activity </h1>
-          <button onClick={toggleSidebar} className="close-button">
-            ✖
-          </button>
+            <h1>Activity</h1>
+            <button onClick={toggleSidebar} className="close-button">
+              ✖
+            </button>
           </div>
           <Menu>
             <MenuItem> Dashboard </MenuItem>
@@ -41,4 +41,3 @@ export default function sidebar() {
     </div>
   );
 }
-

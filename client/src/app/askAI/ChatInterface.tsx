@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import LawDrawer from "@/components/LawDrawer";
+import Image from "next/image";
 
 interface Message {
   sender: string;
@@ -47,7 +48,7 @@ export default function ChatInterface() {
   return (
     <div className="flex flex-col h-screen">
       <div className="flex justify-center items-center h-1/4">
-        <img src="/navlogo.png" alt="Logo" />
+        <Image src="/navlogo.png" alt="Logo" />
       </div>
       <div className="flex justify-center items-center">
         <h1 className="text-4xl">Welcome to Naaya</h1>

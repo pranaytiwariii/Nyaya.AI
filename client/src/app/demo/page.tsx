@@ -72,7 +72,7 @@ export default function Page() {
             <DrawerTitle>Move Goal</DrawerTitle>
             <DrawerDescription>Set your daily activity goal.</DrawerDescription>
           </DrawerHeader>
-          <h1>vdoiufb'</h1>
+          <h1>vdoiufb</h1>
           <DrawerFooter>
             <Button>Submit</Button>
             <DrawerClose asChild>

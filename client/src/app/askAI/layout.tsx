@@ -1,6 +1,5 @@
 import React from 'react';
-import Sidebar from './sidebar';
-import Chatspace from './chatspace';
+import Sidebar from './SideComponent';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     return (
@@ -8,7 +7,6 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             {/* <Sidebar /> */}
             <div className='flex'>
                 {children}
-                <Chatspace />
             </div>
         </div>
     );

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Flamenco } from "next/font/google";
+import Image from "next/image";
 
 const sofia = Flamenco({
   subsets: ["latin"],
@@ -19,7 +20,7 @@ export default function Navbar() {
     <>
     <div className="shadow-md flex pb-0 justify-between items-center pt-0 sm:pr-8 p-4 md:pr-32">
       <div className="flex items-center">
-        <img className="h-20 sm:h-28" src="/navlogo.png" alt="NAAYA Logo" />
+        <Image width={500} height={500} className="h-20 sm:h-28" src="/navlogo.png" alt="NAAYA Logo" />
         <h1 className={`text-3xl font-semibold ${sofia.className}`}>NAAYA</h1>
       </div>
       <div>

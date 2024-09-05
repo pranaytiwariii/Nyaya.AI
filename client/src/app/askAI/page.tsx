@@ -1,8 +1,24 @@
-import React from 'react'
+import Sidebar from './SideComponent';
+import ChatInterface from './ChatInterface';
+import { Flamenco } from "next/font/google";
+import React from 'react';
 
-export default function 
-() {
+const sofia = Flamenco({
+  subsets: ["latin"],
+  weight: ["300", "400"],
+});
+
+export default function AskAIPage() {
   return (
-    <div></div>
-  )
+    <div>
+      <React.Fragment>
+        <div className={`flex w-screen ${sofia.className}`}>
+          <Sidebar />
+          <div className='w-full'>
+            <ChatInterface />
+          </div>
+        </div>
+      </React.Fragment>
+    </div>
+  );
 }
