@@ -48,7 +48,7 @@ export default function ChatInterface() {
   return (
     <div className="flex flex-col h-screen">
       <div className="flex justify-center items-center h-1/4">
-        <Image src="/navlogo.png" width={100} height={500} alt="Logo" />
+        <Image src="/navlogo.png" width={400} height={500} alt="Logo" />
       </div>
       <div className="flex justify-center items-center">
         <h1 className="text-4xl">Welcome to Naaya</h1>
