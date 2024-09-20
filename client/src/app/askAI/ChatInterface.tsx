@@ -47,7 +47,7 @@ export default function ChatInterface() {
 
   return (
     <div className="flex pt-12 flex-col h-screen">
-      <div className="flex justify-center items-center h-1/4">
+      <div className="flex justify-center pt-10 items-center h-1/4">
         <Image src="/navlogo.png" width={400} height={500} alt="Logo" />
       </div>
       <div className="flex justify-center items-center">
