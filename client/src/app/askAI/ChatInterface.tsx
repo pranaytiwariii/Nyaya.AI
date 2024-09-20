@@ -15,7 +15,6 @@ export default function ChatInterface() {
     { sender: "bot", text: "Welcome to Naaya! How can I assist you today?" }
   ]);
   const [inputValue, setInputValue] = useState<string>("");
-  const [conversationStarted, setConversationStarted] = useState<boolean>(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const handleSendMessage = (e: React.FormEvent) => {
@@ -25,9 +24,6 @@ export default function ChatInterface() {
     const newMessage: Message = { sender: "user", text: inputValue };
     setMessages([...messages, newMessage]);
     setInputValue("");
-
-    // Mark conversation as started
-    setConversationStarted(true);
 
     // Simulate bot response (this will be replaced with actual chatbot integration)
     setTimeout(() => {
@@ -40,7 +36,6 @@ export default function ChatInterface() {
     // Clear current chat
     setMessages([{ sender: "bot", text: "Welcome to Naaya! How can I assist you today?" }]);
     setInputValue("");
-    setConversationStarted(false);
 
     const chatHistory = JSON.stringify(messages);
     console.log("Chat history saved:", chatHistory);
@@ -51,12 +46,10 @@ export default function ChatInterface() {
   }, [messages]);
 
   return (
-    <div className="flex pt-24 flex-col h-screen">
-      {!conversationStarted && (
-        <div className="flex justify-center items-center h-1/4">
-          <Image src="/navlogo.png" width={400} height={500} alt="Logo" />
-        </div>
-      )}
+    <div className="flex pt-12 flex-col h-screen">
+      <div className="flex justify-center items-center h-1/4">
+        <Image src="/navlogo.png" width={400} height={500} alt="Logo" />
+      </div>
       <div className="flex justify-center items-center">
         <h1 className="text-4xl">Welcome to Naaya</h1>
       </div>

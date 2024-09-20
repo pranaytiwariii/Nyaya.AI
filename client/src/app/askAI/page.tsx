@@ -13,7 +13,9 @@ export default function AskAIPage() {
     <div>
       <React.Fragment>
         <div className={`flex w-screen ${sofia.className}`}>
+          <div className='hidden sm:flex'>
           <Sidebar />
+          </div>
           <div className='w-full'>
             <ChatInterface />
           </div>
