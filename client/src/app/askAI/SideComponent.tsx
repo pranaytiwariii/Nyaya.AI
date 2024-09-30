@@ -3,7 +3,11 @@
 import React, { useState } from 'react';
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 
-export default function SidebarComponent() {
+interface SidebarComponentProps {
+  setSelectedMenuItem: (item: string) => void;
+}
+
+export default function SidebarComponent({ setSelectedMenuItem }: SidebarComponentProps) {
   const [isOpen, setIsOpen] = useState(true);
 
   const toggleSidebar = () => {
@@ -21,15 +25,15 @@ export default function SidebarComponent() {
             </button>
           </div>
           <Menu>
-            <MenuItem> Dashboard </MenuItem>
-            <MenuItem> Profile </MenuItem>
-            <MenuItem> History </MenuItem>
+            <MenuItem onClick={() => setSelectedMenuItem('Dashboard')}> Dashboard </MenuItem>
+            <MenuItem onClick={() => setSelectedMenuItem('Profile')}> Profile </MenuItem>
+            <MenuItem onClick={() => setSelectedMenuItem('History')}> History </MenuItem>
             <SubMenu label="Charts">
-              <MenuItem> Pie charts </MenuItem>
-              <MenuItem> Line charts </MenuItem>
+              <MenuItem onClick={() => setSelectedMenuItem('Pie charts')}> Pie charts </MenuItem>
+              <MenuItem onClick={() => setSelectedMenuItem('Line charts')}> Line charts </MenuItem>
             </SubMenu>
-            <MenuItem> Documentation </MenuItem>
-            <MenuItem> Calendar </MenuItem>
+            <MenuItem onClick={() => setSelectedMenuItem('Documentation')}> Documentation </MenuItem>
+            <MenuItem onClick={() => setSelectedMenuItem('Calendar')}> Calendar </MenuItem>
           </Menu>
         </Sidebar>
       )}

@@ -1,33 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React from "react";
 
-interface SidebarHistoryProps {
-  onSelectHistory: (history: string) => void;
+interface Message {
+  sender: string;
+  text: string;
 }
 
-const SidebarHistory: React.FC<SidebarHistoryProps> = ({ onSelectHistory }) => {
-  const [historyList, setHistoryList] = useState<string[]>([]);
+interface ChatHistoryProps {
+  chatHistory: Message[];
+}
 
-  useEffect(() => {
-    const storedHistory = JSON.parse(localStorage.getItem('chatHistoryList') || '[]');
-    setHistoryList(storedHistory);
-  }, []);
-
-  const handleSelectHistory = (history: string) => {
-    onSelectHistory(history);
-  };
-
+const ChatHistory: React.FC<ChatHistoryProps> = ({ chatHistory }) => {
   return (
-    <div className="sidebar">
-      <h2>Chat History</h2>
-      <ul>
-        {historyList.map((history, index) => (
-          <li key={index} onClick={() => handleSelectHistory(history)}>
-            Chat {index + 1}
-          </li>
+    <div className="w-64 p-4 bg-gray-200">
+      <h2 className="text-xl font-bold mb-4">Chat History</h2>
+      <div className="space-y-2">
+        {chatHistory.map((message, index) => (
+          <div key={index} className="p-2 border rounded-lg bg-white">
+            <p className="font-semibold">{message.sender}</p>
+            <p>{message.text}</p>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
 
-export default SidebarHistory;
+export default ChatHistory;
