@@ -32,20 +32,10 @@ const data: Lawyer[] = [
   // Add more sample data as needed
 ];
 
-export default function LawDrawer() {
+export default function ChatInterface() {
   return (
-    <div className="">
-      <Drawer>
-        <DrawerTrigger asChild>
-          <Button variant="outline">Connect Lawyers</Button>
-        </DrawerTrigger>
-        <DrawerContent>
-          <div className="mx-auto w-full max-w-7xl">
-            <DrawerHeader className="sticky top-0 flex-col justify-center text-center bg-white z-10">
-              <DrawerTitle>Lawyers</DrawerTitle>
-              <DrawerDescription>Connect with experienced lawyers.</DrawerDescription>
-            </DrawerHeader>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 z-[6000] overflow-y-auto max-h-[60vh]">
+    <div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 z-[6000] overflow-y-auto max-h-[60vh]">
               {data.map((lawyer) => (
                 <div key={lawyer.id} className="p-4 border rounded-lg shadow-sm bg-white">
                   <h2 className="text-lg font-bold">{lawyer.name}</h2>
@@ -55,15 +45,6 @@ export default function LawDrawer() {
                 </div>
               ))}
             </div>
-            <DrawerFooter className="mt-4">
-              <Button>Submit</Button>
-              <DrawerClose asChild>
-                <Button variant="outline">Cancel</Button>
-              </DrawerClose>
-            </DrawerFooter>
-          </div>
-        </DrawerContent>
-      </Drawer>
     </div>
   );
 }
