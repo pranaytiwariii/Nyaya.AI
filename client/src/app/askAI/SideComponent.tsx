@@ -5,9 +5,10 @@ import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 
 interface SidebarComponentProps {
   setSelectedMenuItem: (item: string) => void;
+  chatHistories: { id: string; history: string }[];
 }
 
-export default function SidebarComponent({ setSelectedMenuItem }: SidebarComponentProps) {
+export default function SidebarComponent({ setSelectedMenuItem, chatHistories }: SidebarComponentProps) {
   const [isOpen, setIsOpen] = useState(true);
 
   const toggleSidebar = () => {
@@ -35,6 +36,19 @@ export default function SidebarComponent({ setSelectedMenuItem }: SidebarCompone
             <MenuItem onClick={() => setSelectedMenuItem('Documentation')}> Documentation </MenuItem>
             <MenuItem onClick={() => setSelectedMenuItem('Calendar')}> Calendar </MenuItem>
           </Menu>
+          <div className="p-4">
+            <h2 className="text-xl font-bold mb-4">Chat Histories</h2>
+            {chatHistories && chatHistories.length > 0 ? (
+              chatHistories.map((chat, index) => (
+                <div key={index} className="mb-4">
+                  <h3 className="font-semibold">{chat.id}</h3>
+                  <pre className="bg-gray-100 p-2 rounded overflow-auto max-h-64">{chat.history}</pre>
+                </div>
+              ))
+            ) : (
+              <p>No chat histories available.</p>
+            )}
+          </div>
         </Sidebar>
       )}
       {!isOpen && (

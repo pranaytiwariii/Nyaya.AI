@@ -10,10 +10,14 @@ interface Message {
   text: string;
 }
 
-export default function ChatInterface() {
-  const [messages, setMessages] = useState<Message[]>([
-    { sender: "bot", text: "Welcome to Naaya! How can I assist you today?" }
-  ]);
+interface ChatInterfaceProps {
+  messages: Message[];
+  setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
+  saveChatHistory: (history: string) => void;
+  selectedMenuItem: string;
+}
+
+const ChatInterface: React.FC<ChatInterfaceProps> = ({ messages, setMessages, saveChatHistory, selectedMenuItem }) => {
   const [inputValue, setInputValue] = useState<string>("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -33,12 +37,13 @@ export default function ChatInterface() {
   };
 
   const handleNewChat = () => {
+    const chatHistory = JSON.stringify(messages, null, 2); // Format JSON with indentation
+    console.log("Chat history saved:", chatHistory);
+    saveChatHistory(chatHistory);
+
     // Clear current chat
     setMessages([{ sender: "bot", text: "Welcome to Naaya! How can I assist you today?" }]);
     setInputValue("");
-
-    const chatHistory = JSON.stringify(messages);
-    console.log("Chat history saved:", chatHistory);
   };
 
   useEffect(() => {
@@ -48,7 +53,7 @@ export default function ChatInterface() {
   return (
     <div className="flex pt-12 flex-col h-screen">
       <div className="flex justify-center pt-10 items-center h-1/4">
-        <Image src="/navlogo.png" width={400} height={500} alt="Logo" />
+        <Image src="/navlogo.png" width={400} height={500} alt="Logo" priority />
       </div>
       <div className="flex justify-center items-center">
         <h1 className="text-4xl">Welcome to Naaya</h1>
@@ -58,17 +63,14 @@ export default function ChatInterface() {
         <LawDrawer />
       </div>
       <div className="flex flex-col flex-grow p-4 space-y-4 overflow-y-auto bg-gray-100 mt-4">
+        {/* <h2 className="text-2xl mb-4">{selectedMenuItem}</h2> */}
         {messages.map((message, index) => (
           <div
             key={index}
-            className={`flex ${
-              message.sender === "user" ? "justify-end" : "justify-start"
-            }`}
+            className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}
           >
             <div
-              className={`p-2 rounded-lg ${
-                message.sender === "user" ? "bg-blue-500 text-white" : "bg-gray-300 text-black"
-              }`}
+              className={`p-2 rounded-lg ${message.sender === "user" ? "bg-blue-500 text-white" : "bg-gray-300 text-black"}`}
             >
               {message.text}
             </div>
@@ -88,4 +90,6 @@ export default function ChatInterface() {
       </form>
     </div>
   );
-}
+};
+
+export default ChatInterface;
